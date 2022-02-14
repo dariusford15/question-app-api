@@ -21,6 +21,7 @@ router.post('/questions', async function(req, res, next) {
     res.json(question)
 });
 
+
 // Get http://localhost:3000/api/questions
 router.get('/questions', async function(req, res, next) {
     console.log('req.query', req.query)
@@ -32,7 +33,7 @@ router.get('/questions', async function(req, res, next) {
 router.post('/questions/:questionId/answers', async function(req, res, next) {
     console.log('req.body', req.body)
     console.log('req.params', req.params)
-    let answers = await models.Answer.create({answerText: req.body.answerText})
+    let answers = await models.Answer.create({answerText: req.body.answerText, questionId: req.params.questionId})
     res.json(answers)
 });
 // Get http://localhost:3000/api/questions/:questionId/answers
